@@ -1,0 +1,113 @@
+﻿<Window x:Class="Corners.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Corners" Height="415" Width="625"
+        MinHeight="415"
+        MinWidth="625"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Настройки-->
+        <TextBlock Grid.Column="0"
+                   TextAlignment="Center"
+                   Text="Настройки"
+                   FontSize="16"/>
+        
+        <!--Игровая доска-->
+        <TextBlock Grid.Column="1"
+                   TextAlignment="Center"
+                   Text="Игровая доска"
+                   FontSize="16"/>
+
+        <!--История ходов-->
+        <TextBlock Grid.Column="2"
+                   TextAlignment="Center"
+                   Text="История ходов"
+                   FontSize="16"/>
+
+        <!--Кнопки-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="NewGameBtn"     Content="Новая игра"     Margin="5" Grid.Row="0" Click="NewGameBtn_Click"/>
+            <Button x:Name="LoadBtn"        Content="Загрузить игру" Margin="5" Grid.Row="1" Click="LoadBtn_Click"/>
+            <Button x:Name="SaveBtn"        Content="Сохранить игру" Margin="5" Grid.Row="2" Click="SaveBtn_Click"/>
+            <Button x:Name="ShowRecordsBtn" Content="Результаты"     Margin="5" Grid.Row="3" Click="ShowRecordsBtn_Click"/>
+            <Button x:Name="InfoBtn"        Content="Справка"        Margin="5" Grid.Row="4" Click="Info_Click"/>
+            <Button x:Name="AboutBtn"       Content="О разработчике" Margin="5" Grid.Row="5" Click="About_Click"/>
+            <Button x:Name="ExitBtn"        Content="Выход"          Margin="5" Grid.Row="6" Click="Exit_Click"/>
+
+        </Grid>
+
+        <!--Доска-->
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                BorderThickness="5"
+                BorderBrush="Black"
+                Margin="5">
+            <Grid  x:Name="BoardGrid"
+                   MouseLeftButtonDown="BoardGrid_MouseLeftButtonDown"/>
+        </Border>
+
+        <!--История ходов (отображение)-->
+        <ListBox x:Name="HistoryListBox"
+                 Grid.Row="1"
+                 Grid.Column="2"
+                 HorizontalContentAlignment="Center"
+                 Background="YellowGreen"/>
+
+        <!--Очередность хода-->
+        <TextBlock Text="Первым ходит: White"
+                   x:Name="WhosTurnTextBlock"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"/>
+
+        <!--Имена игроков-->
+        <DockPanel Grid.Row="2"
+                   Grid.Column="1">
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="35,5,5,5"
+                       Text="Player1"
+                       x:Name="Player1TextBox"/>
+            <TextBlock HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="5,5,35,5"
+                       Text="Player2"
+                       x:Name="Player2TextBox"/>
+        </DockPanel>
+
+        <!--Количество ходов-->
+        <TextBlock x:Name="TurnCountTextBlock"
+                   Grid.Row="2"
+                   Grid.Column="2"
+                   TextAlignment="Center"
+                   VerticalAlignment="Top"
+                   Background="YellowGreen"/>
+    </Grid>
+
+</Window>
